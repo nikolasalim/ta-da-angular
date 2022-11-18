@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IItem } from 'src/app/models';
+import { OverviewService } from '../services/overview.service';
 
 @Component({
   selector: 'app-items-list',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsListComponent implements OnInit {
 
-  constructor() { }
+  items$: Observable<IItem[] | null>;
+
+  constructor(
+    private overviewService: OverviewService
+  ) { }
 
   ngOnInit(): void {
+    this.items$ = this.overviewService.items$;
   }
 
 }

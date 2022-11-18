@@ -3,6 +3,7 @@ import { OverviewRoutingModule } from './overview-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OverviewComponent } from './overview.component';
 import { ItemsListComponent } from './items-list/items-list.component';
+import { ItemComponent } from './item/item.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
   ],
   declarations: [
     OverviewComponent,
-    ItemsListComponent
+    ItemsListComponent,
+    ItemComponent
   ]
 })
 export class OverviewModule { }
