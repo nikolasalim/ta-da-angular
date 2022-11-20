@@ -1,0 +1,10 @@
+<p *ngIf="!showInput" (click)="showInput = true">+</p>
+<ng-container *ngIf="showInput">
+  <form #form="ngForm">
+    <div class="input-wrapper">
+      <input type="text" [formControl]="itemInput">
+      <button type="submit" (click)="addItem()">V</button>
+      <button (click)="resetInput()">X</button>
+    </div>
+  </form>
+</ng-container>

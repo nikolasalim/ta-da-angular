@@ -12,7 +12,11 @@ export class OverviewRestService {
     private http: HttpClient
   ) { }
 
-  getItems(): Observable<any> {
+  getItems(): Observable<IItem[] | null> {
     return this.http.get<IItem[] | null>('http://localhost:3000/todoItems');
+  }
+
+  addItem(item: IItem): Observable<IItem> {
+    return this.http.post<IItem>('http://localhost:3000/todoItems', item);
   }
 }
