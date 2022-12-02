@@ -1,6 +1,7 @@
-<ng-container *ngIf="(items$ | async) as items">
-  <ng-container *ngFor="let item of items">
+<ng-container *ngIf="(items$ | async)?.length; else loading">
+  <ng-container *ngFor="let item of (items$ | async)">
     <app-item [item]="item"></app-item>
   </ng-container>
 </ng-container>
+<ng-template #loading>Loading...</ng-template>
 <app-add-item></app-add-item>

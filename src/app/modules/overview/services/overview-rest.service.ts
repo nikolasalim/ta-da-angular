@@ -12,8 +12,8 @@ export class OverviewRestService {
     private http: HttpClient
   ) { }
 
-  getItems(): Observable<IItem[] | null> {
-    return this.http.get<IItem[] | null>('http://localhost:3000/todoItems');
+  getItems(): Observable<IItem[]> {
+    return this.http.get<IItem[]>('http://localhost:3000/todoItems');
   }
 
   addItem(item: IItem): Observable<IItem> {

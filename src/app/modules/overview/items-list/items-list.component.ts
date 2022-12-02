@@ -10,7 +10,7 @@ import { OverviewService } from '../services/overview.service';
 })
 export class ItemsListComponent implements OnInit {
 
-  items$: Observable<IItem[] | null>;
+  items$: Observable<IItem[]>;
 
   constructor(
     private overviewService: OverviewService

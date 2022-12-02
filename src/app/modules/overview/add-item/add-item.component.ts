@@ -21,10 +21,8 @@ export class AddItemComponent implements OnInit {
 
   addItem():void {
     if (this.itemInput.valid) {
-      this.overviewService.addItem(this.itemInput.value)
-        .subscribe();
+      this.overviewService.addItem(this.itemInput.value).subscribe()
       this.showInput = false;
-    
     } else {
       // TODO validation error message
       this.itemInput.markAllAsTouched;
