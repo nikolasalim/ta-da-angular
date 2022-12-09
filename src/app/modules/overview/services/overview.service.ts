@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged, Observable, tap, map, switchMap, merge, flatMap, withLatestFrom } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, Observable, tap, filter, map, concat, switchMap, mergeMap, merge, forkJoin, flatMap, withLatestFrom, combineLatest, of, take } from 'rxjs';
 import { IItem, ItemStatus } from 'src/app/models';
 import { OverviewRestService } from './overview-rest.service';
 
@@ -26,5 +26,18 @@ export class OverviewService {
         withLatestFrom(this.items$),
         tap(([newItem, currentItems]) => this._items.next([...currentItems, newItem]))
       );
+  }
+
+  removeItem(id: number){     
+    return this.overviewRestService.removeItem(id)
+      .pipe(
+        switchMap(() => this.items$.pipe(
+          take(1),
+          tap(items => {
+            const updatedItems = items.filter(item => item.id !== id)
+            this._items.next(updatedItems)
+          })
+        )
+      ))
   }
 }
