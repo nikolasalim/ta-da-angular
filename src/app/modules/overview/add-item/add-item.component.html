@@ -1,10 +1,10 @@
-<p *ngIf="!showInput" (click)="showInput = true">+</p>
+<p *ngIf="!showInput" (click)="toggleAdd()">+</p>
 <ng-container *ngIf="showInput">
   <form #form="ngForm">
     <div class="input-wrapper">
-      <input type="text" [formControl]="itemInput">
+      <input type="text" [formControl]="itemInput" #input>
       <button type="submit" (click)="addItem()">V</button>
-      <button (click)="resetInput()">X</button>
+      <button type="button" (click)="toggleAdd()">X</button>
     </div>
   </form>
 </ng-container>

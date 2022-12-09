@@ -21,7 +21,7 @@ export class ItemComponent implements OnInit {
   removeItem(id: number | undefined){
     if (id){
       this.overviewService.removeItem(id)
-        .subscribe(sub => console.log('on sub:', sub));
+        .subscribe();
     }
   }
 
