@@ -41,8 +41,16 @@ export class OverviewService {
       ))
   }
 
-  editItem(item:IItem){
-    // TODO update methods returned type (obs)
-    return this.overviewRestService.editItem;
+  editItem(item:IItem): Observable<IItem[]> {
+    return this.overviewRestService.editItem(item)
+      .pipe(
+        switchMap(updatedItem => this.items$.pipe(
+          take(1),
+          tap(currentItems => {
+            const updatedItems = currentItems.map(item => item.id === updatedItem.id ? updatedItem : item);
+            this._items.next(updatedItems);
+          })
+        ))
+      )
   }
 }
