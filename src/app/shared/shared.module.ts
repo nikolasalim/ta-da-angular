@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TitleInputComponent } from './title-input/title-input.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TitleInputComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TitleInputComponent
   ]
 })
 export class SharedModule { }

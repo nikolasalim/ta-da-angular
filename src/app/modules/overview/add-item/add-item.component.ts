@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren, ViewChild} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { take } from 'rxjs';
+import { TitleInputComponent } from 'src/app/shared/title-input/title-input.component';
 import { OverviewService } from '../services/overview.service';
 
 @Component({
@@ -8,11 +8,12 @@ import { OverviewService } from '../services/overview.service';
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.scss']
 })
-export class AddItemComponent implements OnInit, AfterViewInit {
+export class AddItemComponent implements OnInit {
 
   showInput = false;
   itemInput: FormControl = new FormControl('', Validators.required);
   @ViewChildren('input') inputRef: QueryList<ElementRef>;
+  @ViewChild('titleInput') titleInputComponent: TitleInputComponent;
 
   constructor(
     private overviewService: OverviewService
@@ -21,25 +22,14 @@ export class AddItemComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    this.inputRef.changes
-    .subscribe((input: QueryList<ElementRef>) => {
-      if (input.first) input.first.nativeElement.focus();
-    });
-  }
-
   toggleAdd():void {
     this.showInput = !this.showInput;
-    this.itemInput.reset();
   }
 
-  addItem():void {
-    if (this.itemInput.valid) {
-      this.overviewService.addItem(this.itemInput.value)
-        .subscribe(() => {
-          this.itemInput.reset();
-          this.inputRef.notifyOnChanges()
-        })
+  addItem(inputControl: FormControl):void {
+    if (inputControl.valid) {
+      this.overviewService.addItem(inputControl.value)
+        .subscribe(() => this.titleInputComponent.titleInput.reset())
     } else {
       // TODO validation error message
       this.itemInput.markAllAsTouched

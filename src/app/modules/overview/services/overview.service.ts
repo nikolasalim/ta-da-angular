@@ -40,4 +40,9 @@ export class OverviewService {
         )
       ))
   }
+
+  editItem(item:IItem){
+    // TODO update methods returned type (obs)
+    return this.overviewRestService.editItem;
+  }
 }

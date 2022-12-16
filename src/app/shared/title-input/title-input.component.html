@@ -1,0 +1,9 @@
+<ng-container>
+  <form #form="ngForm">
+    <div class="input-wrapper">
+      <input type="text" [formControl]="titleInput" #input>
+      <button type="submit" (click)="confirm()">V</button>
+      <button type="button" (click)="cancel()">X</button>
+    </div>
+  </form>
+</ng-container>
