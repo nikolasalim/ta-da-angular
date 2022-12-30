@@ -1,10 +1,4 @@
 <p *ngIf="!showInput" (click)="toggleAdd()">+</p>
 <ng-container *ngIf="showInput">
-  <form #form="ngForm">
-    <div class="input-wrapper">
-      <input type="text" [formControl]="itemInput" #input>
-      <button type="submit" (click)="addItem()">V</button>
-      <button type="button" (click)="toggleAdd()">X</button>
-    </div>
-  </form>
+  <app-title-input (cancelEvent)="toggleAdd()" (confirmEvent)="addItem($event)" #titleInput></app-title-input>
 </ng-container>

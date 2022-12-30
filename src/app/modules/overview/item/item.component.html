@@ -1,2 +1,15 @@
-<p>{{item.title}}</p>
+<ng-container *ngIf="!showEditTitle; else editTitleMode">
+  <p (click)="toggleEditTitle()">{{item.title}}</p>
+</ng-container>
+<ng-template #editTitleMode>
+  <app-title-input
+    [initialValue]="item.title"
+    (cancelEvent)="showEditTitle = false"
+    (confirmEvent)="editTitle($event, item)">
+  </app-title-input>
+</ng-template>
+<app-status-input
+[initialStatus]="item.status"
+(updateStatus)="editStatus($event, item)">
+</app-status-input>
 <button (click)="removeItem(item.id)">X</button>

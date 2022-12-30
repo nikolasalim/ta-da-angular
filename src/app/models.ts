@@ -5,7 +5,7 @@ export interface IItem {
 }
 
 export enum ItemStatus {
-  OPEN = 'open',
-  RESOLVED = 'resolved',
-  ON_HOLD = 'onHold'
+  Open = "OPEN",
+  Resolved = "RESOLVED",
+  OnHold = 'ON_HOLD'
 }

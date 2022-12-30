@@ -23,4 +23,8 @@ export class OverviewRestService {
   removeItem(id: number): Observable<IItem> {
     return this.http.delete<IItem>(`http://localhost:3000/todoItems/${id}`);
   }
+
+  editItem(item: IItem): Observable<IItem> {
+    return this.http.put<IItem>(`http://localhost:3000/todoItems/${item.id}`, item);
+  }
 }
