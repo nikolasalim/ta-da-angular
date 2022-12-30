@@ -9,7 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class TitleInputComponent implements OnInit, AfterViewInit {
 
-  titleInput: FormControl = new FormControl('', Validators.required);
+  titleCtrl: FormControl = new FormControl('', Validators.required);
   @ViewChild('input') inputRef: ElementRef;
   @Input() initialValue: string;
   @Output() cancelEvent = new EventEmitter(); 
@@ -19,7 +19,7 @@ export class TitleInputComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     if(this.initialValue) {
-      this.titleInput.setValue(this.initialValue);
+      this.titleCtrl.setValue(this.initialValue);
     }
   }
 
@@ -28,12 +28,12 @@ export class TitleInputComponent implements OnInit, AfterViewInit {
   }
 
   confirm(){
-    this.confirmEvent.emit(this.titleInput);
+    this.confirmEvent.emit(this.titleCtrl);
   }
 
   cancel(){
     this.cancelEvent.emit();
-    this.titleInput.reset();
+    this.titleCtrl.reset();
   }
 
 }

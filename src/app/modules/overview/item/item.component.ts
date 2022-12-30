@@ -12,7 +12,7 @@ export class ItemComponent implements OnInit {
 
   @Input() item: IItem
   showEditTitle = false;
-
+  
   constructor(
     private overviewService: OverviewService
   ) { }
@@ -24,14 +24,19 @@ export class ItemComponent implements OnInit {
     this.showEditTitle = !this.showEditTitle; 
   }
 
-  editTitle(titleInput: FormControl, currentItem: IItem){
-    if(titleInput.valid){
-      const updatedItem = {...currentItem, title: titleInput.value}
+  editTitle(titleCtrl: FormControl, currentItem: IItem){
+    if(titleCtrl.valid){
+      const updatedItem = {...currentItem, title: titleCtrl.value}
       this.overviewService.editItem(updatedItem)
         .subscribe(() => this.showEditTitle = false);
     } else {
-      titleInput.markAsTouched();
+      titleCtrl.markAsTouched();
     }
+  }
+
+  editStatus(statusCtrl: FormControl, currentItem: IItem){
+    const updatedItem = {...currentItem, status: statusCtrl.value}
+    this.overviewService.editItem(updatedItem).subscribe();
   }
 
   removeItem(id: number | undefined){

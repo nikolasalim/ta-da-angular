@@ -8,5 +8,8 @@
     (confirmEvent)="editTitle($event, item)">
   </app-title-input>
 </ng-template>
-<p>{{item.status}}</p>
+<app-status-input
+[initialStatus]="item.status"
+(updateStatus)="editStatus($event, item)">
+</app-status-input>
 <button (click)="removeItem(item.id)">X</button>

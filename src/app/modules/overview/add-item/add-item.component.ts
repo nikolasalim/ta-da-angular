@@ -29,7 +29,7 @@ export class AddItemComponent implements OnInit {
   addItem(inputControl: FormControl):void {
     if (inputControl.valid) {
       this.overviewService.addItem(inputControl.value)
-        .subscribe(() => this.titleInputComponent.titleInput.reset())
+        .subscribe(() => this.titleInputComponent.titleCtrl.reset())
     } else {
       // TODO validation error message
       this.itemInput.markAllAsTouched
