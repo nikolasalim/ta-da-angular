@@ -1,3 +1,5 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItemsListComponent } from './items-list.component';
@@ -8,7 +10,8 @@ describe('ItemsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemsListComponent ]
+      declarations: [ ItemsListComponent, AddItemStubComponent ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
 
@@ -21,3 +24,7 @@ describe('ItemsListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({selector: 'app-add-item', template: ''})
+class AddItemStubComponent {
+}
