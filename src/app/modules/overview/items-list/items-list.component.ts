@@ -19,5 +19,9 @@ export class ItemsListComponent implements OnInit {
   ngOnInit(): void {
     this.items$ = this.overviewService.items$;
   }
+  
+  trackByFn(index: number, item: IItem){
+    return item.id;
+  }
 
 }

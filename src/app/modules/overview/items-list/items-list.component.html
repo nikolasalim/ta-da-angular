@@ -1,5 +1,5 @@
 <ng-container *ngIf="(items$ | async)?.length; else loading">
-  <ng-container *ngFor="let item of (items$ | async)">
+  <ng-container *ngFor="let item of (items$ | async); trackBy: trackByFn">
     <app-item [item]="item"></app-item>
   </ng-container>
 </ng-container>
