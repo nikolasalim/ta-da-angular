@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IItem } from 'src/app/models';
+import { Observable } from 'rxjs';
+import { IDurationLevel, IItem } from 'src/app/models';
+import { SettingsService } from 'src/app/shared/services/settings.service';
 import { OverviewService } from '../services/overview.service';
 
 @Component({
@@ -12,12 +14,15 @@ export class ItemComponent implements OnInit {
 
   @Input() item: IItem
   showEditTitle = false;
-  
+  durationLevels$: Observable<IDurationLevel[]>;
+
   constructor(
-    private overviewService: OverviewService
+    private overviewService: OverviewService,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit(): void {
+    this.durationLevels$ = this.settingsService.getDurationLevels();
   }
 
   // describe: toggleEditTitle
@@ -52,6 +57,10 @@ export class ItemComponent implements OnInit {
       this.overviewService.removeItem(id)
         .subscribe();
     }
+  }
+
+  selectDurationLevel(durationLevel: IDurationLevel){
+    console.log('call editItem with:', durationLevel);
   }
 
 }

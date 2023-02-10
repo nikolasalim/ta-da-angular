@@ -21,7 +21,16 @@ export class OverviewService {
   }
 
   addItem(newItemTitle: string){
-    return this.overviewRestService.addItem({title: newItemTitle, status: ItemStatus.Open})
+    return this.overviewRestService.addItem({
+      title: newItemTitle,
+      status: ItemStatus.Open,
+      durationLevel: {
+        level: 1,
+        colour: "#33FFA8",
+        estimatedMinutesMin: 0,
+        estimatedMinutesMax: 15
+      }
+    })
       .pipe(
         withLatestFrom(this.items$),
         tap(([newItem, currentItems]) => this._items.next([...currentItems, newItem]))

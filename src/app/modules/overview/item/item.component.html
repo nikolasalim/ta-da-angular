@@ -1,3 +1,6 @@
+<ng-container>
+  <app-duration-level-select (emitDurationLevel)="selectDurationLevel($event)" [selectedDurationLevel]="item.durationLevel" [durationLevels$]="durationLevels$"></app-duration-level-select>
+</ng-container>
 <ng-container *ngIf="!showEditTitle; else editTitleMode">
   <p (click)="toggleEditTitle()">{{item.title}}</p>
 </ng-container>
