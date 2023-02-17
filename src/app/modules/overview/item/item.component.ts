@@ -31,9 +31,9 @@ export class ItemComponent implements OnInit {
   }
 
   // describe editTule
-  editTitle(titleCtrl: FormControl, currentItem: IItem){
+  editTitle(titleCtrl: FormControl){
     if(titleCtrl.valid){ // describe: form submission successful
-      const updatedItem = {...currentItem, title: titleCtrl.value}
+      const updatedItem = {...this.item, title: titleCtrl.value}
       // describe: overviewService.editItem(updatedItem) is successful
       this.overviewService.editItem(updatedItem) // it should call overviewService.editItem
         .subscribe(() => this.showEditTitle = false); // it should set showEditTitle to false if success
@@ -44,8 +44,8 @@ export class ItemComponent implements OnInit {
   }
 
   // describe: editStatus
-  editStatus(statusCtrl: FormControl, currentItem: IItem){
-    const updatedItem = {...currentItem, status: statusCtrl.value}
+  editStatus(statusCtrl: FormControl){
+    const updatedItem = {...this.item, status: statusCtrl.value}
     // it should call overviewService.editItem with updatedItem
     this.overviewService.editItem(updatedItem).subscribe();
   }
@@ -60,7 +60,8 @@ export class ItemComponent implements OnInit {
   }
 
   selectDurationLevel(durationLevel: IDurationLevel){
-    console.log('call editItem with:', durationLevel);
+    const updatedItem = {...this.item, durationLevel}
+    this.overviewService.editItem(updatedItem).subscribe();
   }
 
 }
