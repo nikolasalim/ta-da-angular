@@ -2,18 +2,86 @@
   "todoItems": [
     {
       "id": 1,
-      "title": "title 1",
-      "status": "OPEN"
+      "title": "take out the trash!!!",
+      "status": "RESOLVED",
+      "durationLevel": {
+        "level": 3,
+        "colour": "#FF4343",
+        "estimatedMinutesMin": 30,
+        "estimatedMinutesMax": 60
+      }
     },
     {
       "id": 2,
-      "title": "title 2",
-      "status": "RESOLVED"
+      "title": "clean up the coffee machine",
+      "status": "RESOLVED",
+      "durationLevel": {
+        "level": 2,
+        "colour": "#008BFF",
+        "estimatedMinutesMin": 15,
+        "estimatedMinutesMax": 30
+      }
     },
     {
       "id": 3,
-      "title": "title 3",
-      "status": "ON_HOLD"
+      "title": "do groceries",
+      "status": "OPEN",
+      "durationLevel": {
+        "level": 2,
+        "colour": "#008BFF",
+        "estimatedMinutesMin": 15,
+        "estimatedMinutesMax": 30
+      }
+    },
+    {
+      "id": 4,
+      "title": "plan holiday",
+      "status": "OPEN",
+      "durationLevel": {
+        "level": 2,
+        "colour": "#008BFF",
+        "estimatedMinutesMin": 15,
+        "estimatedMinutesMax": 30
+      }
+    },
+    {
+      "title": "new task",
+      "status": "OPEN",
+      "durationLevel": {
+        "level": 1,
+        "colour": "#33FFA8",
+        "estimatedMinutesMin": 0,
+        "estimatedMinutesMax": 15
+      },
+      "id": 5
     }
-  ]
+  ],
+  "settings": {
+    "durationLevels": [
+      {
+        "level": 1,
+        "colour": "#33FFA8",
+        "estimatedMinutesMin": 0,
+        "estimatedMinutesMax": 15
+      },
+      {
+        "level": 2,
+        "colour": "#008BFF",
+        "estimatedMinutesMin": 15,
+        "estimatedMinutesMax": 30
+      },
+      {
+        "level": 3,
+        "colour": "#FF4343",
+        "estimatedMinutesMin": 30,
+        "estimatedMinutesMax": 60
+      },
+      {
+        "level": 4,
+        "colour": "#1C1C1C",
+        "estimatedMinutesMin": 60,
+        "estimatedMinutesMax": "indefinitely"
+      }
+    ]
+  }
 }
