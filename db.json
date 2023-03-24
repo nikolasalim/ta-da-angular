@@ -1,9 +1,9 @@
 {
   "todoItems": [
     {
-      "id": 1,
-      "title": "take out the trash!!!",
-      "status": "RESOLVED",
+      "id": 2,
+      "title": "clean up the coffee mac",
+      "status": "OPEN",
       "durationLevel": {
         "level": 3,
         "colour": "#FF4343",
@@ -12,30 +12,8 @@
       }
     },
     {
-      "id": 2,
-      "title": "clean up the coffee machine",
-      "status": "RESOLVED",
-      "durationLevel": {
-        "level": 2,
-        "colour": "#008BFF",
-        "estimatedMinutesMin": 15,
-        "estimatedMinutesMax": 30
-      }
-    },
-    {
       "id": 3,
-      "title": "do groceries",
-      "status": "OPEN",
-      "durationLevel": {
-        "level": 2,
-        "colour": "#008BFF",
-        "estimatedMinutesMin": 15,
-        "estimatedMinutesMax": 30
-      }
-    },
-    {
-      "id": 4,
-      "title": "plan holiday",
+      "title": "do groceries!",
       "status": "OPEN",
       "durationLevel": {
         "level": 2,

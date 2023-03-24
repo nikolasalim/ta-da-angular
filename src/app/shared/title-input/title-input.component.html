@@ -1,7 +1,7 @@
 <ng-container>
   <form #form="ngForm">
     <div class="input-wrapper">
-      <input type="text" [formControl]="titleCtrl" #input>
+      <input maxlength="27" type="text" [formControl]="titleCtrl" #input>
       <button type="submit" (click)="confirm()">V</button>
       <button type="button" (click)="cancel()">X</button>
     </div>

@@ -15,6 +15,8 @@ export class DurationLevelSelectComponent implements OnInit {
   @Output() emitDurationLevel = new EventEmitter<IDurationLevel>();
   durationLevelCtrl = new FormControl();
 
+  selectionMode = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class DurationLevelSelectComponent implements OnInit {
 
   submit(level: IDurationLevel){
     this.emitDurationLevel.emit(level);
+    this.selectionMode = false;
   }
 
 }

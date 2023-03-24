@@ -1,18 +1,16 @@
 <ng-container *ngIf="(durationLevels$ | async) as durationLevels">
-  <ng-select
-    [formControl]="durationLevelCtrl"
-    [items]="durationLevels"
-    bindLabel="colour"
-    bindValue="colour"
-    (change)="submit($event)"
-    [searchable]="false"
-    [clearable]="false"
-  >
-    <ng-template ng-label-tmp let-item="item">
-      <div [ngStyle]="{'background-color': item.colour, 'width': '20px', 'height': '20px'}"></div>
-    </ng-template>
-    <ng-template ng-option-tmp let-item="item">
-      <div [ngStyle]="{'background-color': item.colour, 'width': '20px', 'height': '20px'}"></div>
-    </ng-template>
-  </ng-select>
+  <ng-container *ngIf="!selectionMode; else selection">
+		<div
+			class="selected-level"
+			[ngStyle]="{'background-color': this.selectedDurationLevel.colour}"
+			(click)="selectionMode = true">
+    </div>
+  </ng-container>
+  <ng-template #selection>
+    <div class="level-options">
+      <ng-container *ngFor="let level of durationLevels">
+        <div class="level-option" [ngStyle]="{'background-color': level.colour}" (click)="submit(level)"></div>
+      </ng-container>
+    </div>
+  </ng-template>
 </ng-container>

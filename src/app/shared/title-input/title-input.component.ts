@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 
@@ -15,7 +15,14 @@ export class TitleInputComponent implements OnInit, AfterViewInit {
   @Output() cancelEvent = new EventEmitter(); 
   @Output() confirmEvent = new EventEmitter<FormControl>();
 
-  constructor() { }
+  @HostListener('document:click', ['$event'])
+  clickout(event: Event) {
+    if(!this.elRef.nativeElement.contains(event.target) && this.inputRef.nativeElement !== document.activeElement) {
+      this.cancelEvent.emit();
+    }
+  }
+
+  constructor(private elRef: ElementRef) { }
 
   ngOnInit(): void {
     if(this.initialValue) {
