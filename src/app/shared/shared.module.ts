@@ -6,6 +6,9 @@ import { TitleInputComponent } from './title-input/title-input.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { StatusInputComponent } from './status-input/status-input.component';
 import { DurationLevelSelectComponent } from './duration-level-select/duration-level-select.component'
+import { CloseOnClickoutDirective } from './directives/click-outside/click-outside.directive';
+import { SettingsService } from './services/settings.service';
+import { UIService } from './services/ui.service';
 
 
 
@@ -13,14 +16,15 @@ import { DurationLevelSelectComponent } from './duration-level-select/duration-l
   declarations: [
     TitleInputComponent,
     StatusInputComponent,
-    DurationLevelSelectComponent
+    DurationLevelSelectComponent,
+    CloseOnClickoutDirective,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule,
+    NgSelectModule
   ],
   exports: [
     RouterModule,
@@ -28,9 +32,14 @@ import { DurationLevelSelectComponent } from './duration-level-select/duration-l
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    CloseOnClickoutDirective,
     TitleInputComponent,
     StatusInputComponent,
     DurationLevelSelectComponent
+  ],
+  providers: [
+    SettingsService,
+    UIService
   ]
 })
 export class SharedModule { }

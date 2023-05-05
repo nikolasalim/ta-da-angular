@@ -1,4 +1,4 @@
-<p *ngIf="!showInput" (click)="toggleAdd()">+</p>
+<p *ngIf="!showInput" (click)="toggleAdd($event)">+</p>
 <ng-container *ngIf="showInput">
-  <app-title-input (cancelEvent)="toggleAdd()" (confirmEvent)="addItem($event)" #titleInput></app-title-input>
+  <app-title-input (cancelEvent)="toggleAdd($event)" (confirmEvent)="addItem($event)" #titleInput></app-title-input>
 </ng-container>

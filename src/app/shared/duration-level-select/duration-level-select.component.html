@@ -1,16 +1,16 @@
-<ng-container *ngIf="(durationLevels$ | async) as durationLevels">
+<div *ngIf="(durationLevels$ | async) as durationLevels">
   <ng-container *ngIf="!selectionMode; else selection">
 		<div
 			class="selected-level"
 			[ngStyle]="{'background-color': this.selectedDurationLevel.colour}"
-			(click)="selectionMode = true">
+			(click)="select($event)">
     </div>
   </ng-container>
   <ng-template #selection>
-    <div class="level-options">
+    <div class="level-options" closeOnClickout (clickedOutside)="close()">
       <ng-container *ngFor="let level of durationLevels">
         <div class="level-option" [ngStyle]="{'background-color': level.colour}" (click)="submit(level)"></div>
       </ng-container>
     </div>
   </ng-template>
-</ng-container>
+</div>

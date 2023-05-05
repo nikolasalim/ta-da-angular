@@ -14,7 +14,6 @@ export class DurationLevelSelectComponent implements OnInit {
   @Input() durationLevels$: Observable<IDurationLevel[]>;
   @Output() emitDurationLevel = new EventEmitter<IDurationLevel>();
   durationLevelCtrl = new FormControl();
-
   selectionMode = false;
 
   constructor() { }
@@ -26,6 +25,15 @@ export class DurationLevelSelectComponent implements OnInit {
   submit(level: IDurationLevel){
     this.emitDurationLevel.emit(level);
     this.selectionMode = false;
+  }
+
+  select(event: Event){
+    event.stopPropagation();
+    this.selectionMode = true
+  }
+
+  close(){
+    this.selectionMode = false
   }
 
 }

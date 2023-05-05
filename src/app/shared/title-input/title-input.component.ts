@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 
@@ -12,20 +12,12 @@ export class TitleInputComponent implements OnInit, AfterViewInit {
   titleCtrl: FormControl = new FormControl('', Validators.required);
   @ViewChild('input') inputRef: ElementRef;
   @Input() initialValue: string;
-  @Output() cancelEvent = new EventEmitter(); 
   @Output() confirmEvent = new EventEmitter<FormControl>();
-
-  @HostListener('document:click', ['$event'])
-  clickout(event: Event) {
-    if(!this.elRef.nativeElement.contains(event.target) && this.inputRef.nativeElement !== document.activeElement) {
-      this.cancelEvent.emit();
-    }
-  }
 
   constructor(private elRef: ElementRef) { }
 
   ngOnInit(): void {
-    if(this.initialValue) {
+    if (this.initialValue) {
       this.titleCtrl.setValue(this.initialValue);
     }
   }
@@ -34,12 +26,11 @@ export class TitleInputComponent implements OnInit, AfterViewInit {
     this.inputRef.nativeElement.focus();
   }
 
-  confirm(){
+  confirm() {
     this.confirmEvent.emit(this.titleCtrl);
   }
 
-  cancel(){
-    this.cancelEvent.emit();
+  cancel() {
     this.titleCtrl.reset();
   }
 

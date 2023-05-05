@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IDurationLevel, IItem } from 'src/app/models';
@@ -26,7 +26,8 @@ export class ItemComponent implements OnInit {
   }
 
   // describe: toggleEditTitle
-  toggleEditTitle(): void {
+  toggleEditTitle(event: Event): void {
+    event.stopPropagation();
     this.showEditTitle = !this.showEditTitle; // it should toggle showEditTitle
   }
 

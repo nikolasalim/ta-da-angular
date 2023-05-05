@@ -1,29 +1,7 @@
 {
   "todoItems": [
     {
-      "id": 2,
-      "title": "clean up the coffee mac",
-      "status": "OPEN",
-      "durationLevel": {
-        "level": 3,
-        "colour": "#FF4343",
-        "estimatedMinutesMin": 30,
-        "estimatedMinutesMax": 60
-      }
-    },
-    {
-      "id": 3,
-      "title": "do groceries!",
-      "status": "OPEN",
-      "durationLevel": {
-        "level": 2,
-        "colour": "#008BFF",
-        "estimatedMinutesMin": 15,
-        "estimatedMinutesMax": 30
-      }
-    },
-    {
-      "title": "new task",
+      "title": "test2",
       "status": "OPEN",
       "durationLevel": {
         "level": 1,
@@ -31,7 +9,18 @@
         "estimatedMinutesMin": 0,
         "estimatedMinutesMax": 15
       },
-      "id": 5
+      "id": 2
+    },
+    {
+      "title": "test4",
+      "status": "OPEN",
+      "durationLevel": {
+        "level": 3,
+        "colour": "#FF4343",
+        "estimatedMinutesMin": 30,
+        "estimatedMinutesMax": 60
+      },
+      "id": 4
     }
   ],
   "settings": {

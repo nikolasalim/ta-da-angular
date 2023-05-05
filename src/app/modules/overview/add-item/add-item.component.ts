@@ -22,7 +22,8 @@ export class AddItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleAdd():void {
+  toggleAdd(event: Event):void {
+    event.stopPropagation();
     this.showInput = !this.showInput;
   }
 

@@ -3,12 +3,12 @@
     <app-duration-level-select (emitDurationLevel)="selectDurationLevel($event)" [selectedDurationLevel]="item.durationLevel" [durationLevels$]="durationLevels$"></app-duration-level-select>
   </ng-container>
   <ng-container *ngIf="!showEditTitle; else editTitleMode">
-    <p (click)="toggleEditTitle()">{{item.title}}</p>
+    <p (click)="toggleEditTitle($event)">{{item.title}}</p>
   </ng-container>
   <ng-template #editTitleMode>
     <app-title-input
+      closeOnClickout (clickedOutside)="this.showEditTitle = false"
       [initialValue]="item.title"
-      (cancelEvent)="showEditTitle = false"
       (confirmEvent)="editTitle($event)">
     </app-title-input>
   </ng-template>
