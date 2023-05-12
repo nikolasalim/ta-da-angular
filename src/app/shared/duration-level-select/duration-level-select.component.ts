@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IDurationLevel } from 'src/app/models';
@@ -16,7 +16,9 @@ export class DurationLevelSelectComponent implements OnInit {
   durationLevelCtrl = new FormControl();
   selectionMode = false;
 
-  constructor() { }
+  constructor(
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.durationLevelCtrl.setValue(this.selectedDurationLevel.colour);
@@ -27,13 +29,10 @@ export class DurationLevelSelectComponent implements OnInit {
     this.selectionMode = false;
   }
 
-  select(event: Event){
-    event.stopPropagation();
-    this.selectionMode = true
-  }
-
-  close(){
-    this.selectionMode = false
+  toggleSelect(event: Event){
+    event?.stopPropagation();
+    this.selectionMode = !this.selectionMode;
+    this.cd.detectChanges(); // makes sure that change detection gets picked up after the clickedOutside event is emitted
   }
 
 }

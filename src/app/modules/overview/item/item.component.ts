@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IDurationLevel, IItem } from 'src/app/models';
@@ -18,7 +18,8 @@ export class ItemComponent implements OnInit {
 
   constructor(
     private overviewService: OverviewService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +28,9 @@ export class ItemComponent implements OnInit {
 
   // describe: toggleEditTitle
   toggleEditTitle(event: Event): void {
-    event.stopPropagation();
+    event?.stopPropagation();
     this.showEditTitle = !this.showEditTitle; // it should toggle showEditTitle
+    this.cd.detectChanges(); // makes sure that change detection gets picked up after the clickedOutside event is emitted
   }
 
   // describe editTule

@@ -3,11 +3,11 @@
 		<div
 			class="selected-level"
 			[ngStyle]="{'background-color': this.selectedDurationLevel.colour}"
-			(click)="select($event)">
+			(click)="toggleSelect($event)">
     </div>
   </ng-container>
   <ng-template #selection>
-    <div class="level-options" closeOnClickout (clickedOutside)="close()">
+    <div class="level-options" closeOnClickout (clickedOutside)="toggleSelect($event)">
       <ng-container *ngFor="let level of durationLevels">
         <div class="level-option" [ngStyle]="{'background-color': level.colour}" (click)="submit(level)"></div>
       </ng-container>

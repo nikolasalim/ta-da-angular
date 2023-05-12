@@ -7,7 +7,7 @@
   </ng-container>
   <ng-template #editTitleMode>
     <app-title-input
-      closeOnClickout (clickedOutside)="this.showEditTitle = false"
+      closeOnClickout (clickedOutside)="toggleEditTitle($event)"
       [initialValue]="item.title"
       (confirmEvent)="editTitle($event)">
     </app-title-input>

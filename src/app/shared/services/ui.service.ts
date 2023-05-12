@@ -11,16 +11,10 @@ export class UIService {
   
   constructor() { }
 
-  setActiveClickOutside(elRef: CloseOnClickoutDirective | null) {
-    this._activeClickOutside.next(elRef);
-  }
-
   handleClickoutDirectives(current: CloseOnClickoutDirective){
     const active = this._activeClickOutside.getValue();
-    if (active && active !== current) {
-      setTimeout(() => active?.clickedOutside.emit(), 0);
-    }
-    this.setActiveClickOutside(current);
+    active?.clickedOutside.emit();
+    this._activeClickOutside.next(current);
   }
   
 }
